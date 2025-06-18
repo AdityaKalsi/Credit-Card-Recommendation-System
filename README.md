@@ -116,7 +116,7 @@ Built using **Streamlit**, the interface is clean and interactive.
 
 Users can click **"Ask the Advisor"** to initiate the conversational agent. The agent uses:
 
-1. 🧠 LLM as an Interactive Explainer for Card Recommendations
+1. 🧠 LLM as an Interactive Explainer for Card Recommendations.
 The core recommendation logic (recommendation_module.py) handles the selection and ranking of credit cards based on user constraints like joining fees, renewal fees, reward types, and welcome bonus preferences.
 
 Once recommendations are generated, the LLM does not participate in decision-making — instead, it becomes active after the cards are selected, acting as a personal credit card assistant to answer user queries about those specific cards.
