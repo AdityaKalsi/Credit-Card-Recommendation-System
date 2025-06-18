@@ -30,7 +30,7 @@ To build a useful recommendation system, we first gathered data from trusted ban
 - Card Image URLs
 - Official Application Links
 
-Once scraped, the data was cleaned, deduplicated, and saved to `data/credit_cards.csv`.
+Once scraped, the data was cleaned, deduplicated, and saved to `final_credit_card.csv`.
 
 ---
 
