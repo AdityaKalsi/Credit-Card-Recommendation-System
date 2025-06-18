@@ -14,6 +14,7 @@ The assistant answers questions about the recommended cards using **contextual m
 
 ![Alt Text](https://github.com/AdityaKalsi/Credit-Card-Recommendation-System/blob/10c0545b0ba6b792441a8738936fc94064b99e0b/Screenshot%202025-06-18%20144945.png)
 ![Alt Text](https://github.com/AdityaKalsi/Credit-Card-Recommendation-System/blob/ea952aab4df53941e7be05dc181d2f7fd47ffe7e/Screenshot%202025-06-18%20145528.png)
+![Alt Text](https://github.com/AdityaKalsi/Credit-Card-Recommendation-System/blob/113e54acc1f8a0aa4594f7b077a0f590a05c698f/Screenshot%202025-06-18%20154258.png)
 
 ---
 
