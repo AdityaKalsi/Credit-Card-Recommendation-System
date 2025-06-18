@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aditya's Credit Card Chatbot</title>
+</head>
+<body>
+    <h1>💳 Credit Card Recommendation Bot</h1>
+
+    <form method="post">
+        <label>Question:</label><br>
+        <input type="text" name="question" required><br><br>
+
+        <label>Select Ollama Model:</label><br>
+        <select name="llm_model">
+            <option value="llama3">llama3</option>
+            <option value="mistral">mistral</option>
+            <option value="gemma">gemma</option>
+            <option value="codellama">codellama</option>
+        </select><br><br>
+
+        <label>Temperature:</label><br>
+        <input type="range" name="temperature" min="0" max="1" step="0.1" value="0.7"><br><br>
+
+        <label>Max Tokens:</label><br>
+        <input type="number" name="max_tokens" value="150" min="50" max="300"><br><br>
+
+        <label>Language:</label><br>
+        <select name="language_param">
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="French">French</option>
+            <option value="German">German</option>
+            <option value="Chinese">Chinese</option>
+        </select><br><br>
+
+        <button type="submit">Ask me !!</button>
+    </form>
+
+    {% if response %}
+        <h3>Response:</h3>
+        <p>{{ response }}</p>
+    {% endif %}
+</body>
+</html>
