@@ -34,25 +34,75 @@ Once scraped, the data was cleaned, deduplicated, and saved to `final_credit_car
 
 ---
 
-## **🔍 Recommendation Engine**
+## 🔍 Recommendation Engine
 
-Implemented in `recommendation_module.py`, the engine takes user preferences and matches them with cards in the dataset.
+The heart of this project lies in an intelligent recommendation engine (`recommendation_module.py`) that combines advanced NLP techniques with smart filtering and user-driven customization to deliver personalized credit card suggestions.
 
-### User Input:
-Collected through a Streamlit form:
-- Max Joining Fee
-- Max Renewal Fee
-- Reward Preferences (keywords like cashback, travel, fuel, etc.)
-- Welcome Bonus Preference (boolean)
+---
 
-### Core Logic:
-- Filters cards based on max fee inputs.
-- Calculates a similarity score between user keywords and the USP, pros, cons.
-- Optionally filters for cards mentioning welcome bonuses.
-- Sorts cards based on similarity score.
+### 📥 Data Preprocessing Pipeline
 
-### Output:
-A sorted DataFrame of top recommended cards.
+1. **Data Ingestion and Parsing**  
+   The dataset is loaded from `final_card_data.csv`. A key column, `'Rewards and Benefits'`, contains a stringified dictionary, which is parsed using `ast.literal_eval()` into structured Python dictionaries.
+
+2. **Cleaning and Standardizing Reward Information**  
+   The parsed reward dictionaries are cleaned to remove 'N/A' values and irrelevant entries. These are converted to plain-text using a function (`rewards_to_text`) so they can be vectorized later.
+
+3. **Cleaning Joining and Renewal Fees**  
+   Textual fee entries are cleaned using `clean_joining_fee` and `clean_renewal_fee`. This involves:
+   - Handling `NaN`, `nil`, and `free` values
+   - Extracting numeric parts from messy strings  
+   The cleaned values are stored in `Joining Fees Cleaned` and `Renewal Fees Cleaned`.
+
+4. **Combining Key Features**  
+   A new column `combined_features` is created by merging `USP` (Unique Selling Proposition) with the textual benefits. These are split into sentences and stored in `combined_features_list`.
+
+5. **Creating Enriched Feature Set**  
+   `main_features` merges `Annual Fee` (if available) with the combined sentence list, preparing a strong textual representation for NLP analysis.
+
+---
+
+### 🧠 AI-Powered Recommendation Logic
+
+1. **Hybrid Feature Engineering (Text + Numeric)**  
+   Combines structured fields (fees) with unstructured text (USP, rewards) for holistic representation. Textual benefits are converted into a natural, user-like language.
+
+2. **Advanced Keyword Extraction using spaCy**  
+   Uses `spaCy` to extract:
+   - Noun chunks (e.g., "airport lounge access")
+   - Named entities (e.g., "Amazon", "Zomato")
+   - Key descriptors (nouns, adjectives)  
+   This results in a rich `keywords` column capturing human-like understanding of card benefits.
+
+3. **TF-IDF Vectorization for Semantic Matching**  
+   All extracted keyword features are transformed into vectors using TF-IDF. This ensures each card's features are numerically comparable and emphasizes important but unique terms.
+
+4. **User-Driven Cosine Similarity Matching**  
+   - User enters preferences: reward type, fee limits, and bonus preference.
+   - Input is vectorized and compared with each card using cosine similarity.
+   - Top N cards with highest alignment are returned.
+
+5. **Behavioral Boosting with Welcome Bonus**  
+   If a user prefers welcome bonuses, the system adds a score boost to cards with strong USP descriptions, aligning output with user *intent*, not just content.
+
+6. **Smart Filtering Before Ranking**  
+   The model first filters cards based on user fee limits (`max_joining_fee`, `max_renewal_fee`) before applying NLP, reducing computation and improving relevance.
+
+---
+
+### 🎯 Output
+
+A sorted list of top-N recommended credit cards, each with:
+- 🖼️ Image  
+- 🃏 Card Name  
+- 💰 Joining & Renewal Fees  
+- 🌟 USP (Key Selling Point)  
+- ✅ Pros & ❌ Cons  
+- 🔗 Card Page Link  
+- 📈 Similarity Score (for tr
+
+
+
 
 ---
 
