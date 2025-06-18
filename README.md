@@ -70,6 +70,7 @@ Built using **Streamlit**, the interface is clean and interactive.
 - Recommendations are also passed to the chatbot context via `st.session_state`.
 
 ---
+![Alt text](https://github.com/AdityaKalsi/Credit-Card-Recommendation-System/blob/a8ede1e14003665a08317bb1982e77e0f4b6339b/Screenshot%202025-06-18%20145305.png)
 
 ## **🧠 LLM Chat Assistant (LangChain + Ollama)**
 
