@@ -88,18 +88,6 @@ The heart of this project lies in an intelligent recommendation engine (`recomme
 6. **Smart Filtering Before Ranking**  
    The model first filters cards based on user fee limits (`max_joining_fee`, `max_renewal_fee`) before applying NLP, reducing computation and improving relevance.
 
----
-
-### 🎯 Output
-
-A sorted list of top-N recommended credit cards, each with:
-- 🖼️ Image  
-- 🃏 Card Name  
-- 💰 Joining & Renewal Fees  
-- 🌟 USP (Key Selling Point)  
-- ✅ Pros & ❌ Cons  
-- 🔗 Card Page Link  
-- 📈 Similarity Score (for tr
 
 
 
@@ -129,7 +117,7 @@ Built using **Streamlit**, the interface is clean and interactive.
 Users can click **"Ask the Advisor"** to initiate the conversational agent. The agent uses:
 
 1. 🧠 LLM as an Interactive Explainer for Card Recommendations
-The core recommendation logic (via recommendation_module.py) handles the selection and ranking of credit cards based on user constraints like joining fees, renewal fees, reward types, and welcome bonus preferences.
+The core recommendation logic (recommendation_module.py) handles the selection and ranking of credit cards based on user constraints like joining fees, renewal fees, reward types, and welcome bonus preferences.
 
 Once recommendations are generated, the LLM does not participate in decision-making — instead, it becomes active after the cards are selected, acting as a personal credit card assistant to answer user queries about those specific cards.
 
@@ -138,7 +126,12 @@ To ensure accurate and relevant LLM responses, the app builds a structured card_
 
 This context is injected into the LLM system prompt before any user query is processed.
 
-As a result, the LLM operates with full awareness of what was recommended — allowing it to answer follow-up questions like "Which card has the lowest joining fee?" or "Which one is best for travel?" without hallucinating or straying off-topic.
+As a result, the LLM operates with full awareness of what was recommended — allowing it to answer follow-up questions like:
+
+“Which card has the lowest joining fee?”
+
+“Which one is best for travel?”
+without hallucinating or straying off-topic.
 
 3. 💬 Session-Based Conversational Memory for Multi-Turn Chat
 The LLM chat interface (main.py) uses LangChain’s RunnableWithMessageHistory to maintain a chat memory that persists across user interactions.
@@ -146,13 +139,16 @@ The LLM chat interface (main.py) uses LangChain’s RunnableWithMessageHistory t
 Each session has a unique session_id, enabling contextual continuity, where the LLM can handle multi-turn conversations like:
 
 User: “Which one has cashback?”
-
 User: “Okay, and does that one have a welcome bonus?”
 
 This makes the experience feel natural and dialogue-driven, rather than one-off responses.
 
 4. 🔄 Seamless Integration with Streamlit Frontend
-On the frontend, app.py handles user inputs and displays recommendations, while main.py manages the LLM-based follow-up interaction.
+On the frontend:
+
+app.py handles user inputs and displays recommendations.
+
+main.py manages the LLM-based follow-up interaction.
 
 Once the cards are recommended, the app stores their information (recommended_cards and card_context) in st.session_state.
 
@@ -163,7 +159,7 @@ The LLM doesn’t replace traditional logic but complements it by:
 
 Clarifying recommendations through natural language.
 
-Answering subjective queries (e.g., "Which card is better for students?").
+Answering subjective queries (e.g., “Which card is better for students?”).
 
 Enabling comparisons in a user-friendly, conversational format.
 
