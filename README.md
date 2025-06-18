@@ -71,6 +71,7 @@ Built using **Streamlit**, the interface is clean and interactive.
 
 ---
 ![Alt text](https://github.com/AdityaKalsi/Credit-Card-Recommendation-System/blob/a8ede1e14003665a08317bb1982e77e0f4b6339b/Screenshot%202025-06-18%20145305.png)
+![Alt text](https://github.com/AdityaKalsi/Credit-Card-Recommendation-System/blob/d26482eb33d54bb745733e2de25c3bb63415eaba/Screenshot%202025-06-18%20140908.png)
 
 ## **🧠 LLM Chat Assistant (LangChain + Ollama)**
 
